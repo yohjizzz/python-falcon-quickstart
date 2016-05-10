@@ -55,10 +55,9 @@ class BookResource(object):
 app = falcon.API(middleware=extension.ExtensionComponent())
 app.add_route("/books/{isbn}", BookResource())
 
-if __name__ == "__main__":
-    from wsgiref import simple_server
+# if __name__ == "__main__":
+#     from wsgiref import simple_server
+#
+#     httpd = simple_server.make_server("127.0.0.1", 8000, app)
+#     httpd.serve_forever()
 
-    httpd = simple_server.make_server("127.0.0.1", 8008, app)
-    httpd.serve_forever()
-
-# Or "gunicorn resources:app --reload"
