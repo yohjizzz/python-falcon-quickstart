@@ -1,18 +1,14 @@
 import json
+
 import falcon
-import extension
+
+from app import extension
+from app import models
 
 
 @falcon.before(extension.before_resource)
 @falcon.after(extension.after_resource)
 class BookResource(object):
-    # Dummy Resource
-    books = {
-        "4873117569": {"name": "Effective Python ―Pythonプログラムを改良する59項目", "author": "Brett Slatkin"},
-        "4873117380": {"name": "入門 Python 3", "author": "Bill Lubanovic"},
-        "4873117402": {"name": "ハイパフォーマンスPython", "author": "Micha Gorelick"},
-        "4873117399": {"name": "実践 Python 3", "author": "Mark Summerfield"}
-    }
 
     def on_get(self, req, resp, isbn):
         book = self._match(req, resp, isbn)
@@ -39,7 +35,7 @@ class BookResource(object):
 
     def _match(self, req, resp, isbn):
         if isbn:
-            book = self.books.get(isbn)
+            book = models.BookModel().find(isbn)
             if book:
                 return book
             else:
