@@ -1,7 +1,13 @@
-# python-falcon-quickstart
+# Python Falcon QuickStart
 
 [Falcon](http://falconframework.org) 開発クイックスタート
 
+
+
+### What is "Falcon" ?
+
+http://falconframework.org
+http://falcon.readthedocs.io/
 
 
 
@@ -22,6 +28,7 @@ $ curl localhost:8000/books/4873117399
 ### Usage "Test"
 
 ```
+$ pip install -r test-requirements.txt
 $ nosetests --with-xunit --with-coverage --cover-erase --cover-package=app --verbose
 ```
 
